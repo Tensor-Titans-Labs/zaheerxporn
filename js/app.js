@@ -298,22 +298,56 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
     const signupForm = document.getElementById('signup-form');
     const switchAuthLinks = document.querySelectorAll('.switch-auth');
+    const btnLogin = document.querySelector('.btn-login');
+    const btnSignup = document.querySelector('.btn-signup');
+    const userMenu = document.getElementById('user-menu');
+    const navUsername = document.getElementById('nav-username');
+    const btnLogout = document.getElementById('btn-logout');
+
+    // Check for persisted user
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser) {
+        updateAuthUI(currentUser);
+    }
+
+    function updateAuthUI(user) {
+        if (user) {
+            btnLogin.style.display = 'none';
+            btnSignup.style.display = 'none';
+            userMenu.style.display = 'flex';
+            userMenu.style.alignItems = 'center';
+            navUsername.textContent = user.name || user.email.split('@')[0];
+        } else {
+            btnLogin.style.display = 'inline-block';
+            btnSignup.style.display = 'inline-block';
+            userMenu.style.display = 'none';
+            navUsername.textContent = '';
+        }
+    }
+
+    function login(user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        updateAuthUI(user);
+        showToast(`Welcome back, ${user.name || 'User'}!`, 'success');
+        switchView('home');
+    }
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        updateAuthUI(null);
+        showToast('Logged out successfully.', 'success');
+        switchView('home');
+    }
 
     if (loginForm) {
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('login-email').value;
-            // Mock Login
+            // Simulate Login
             if (email) {
-                showToast(`Welcome back!`, 'success');
-                // Simulate delay
-                setTimeout(() => {
-                    switchView('home');
-                    // Update UI to show logged in state (optional for mock)
-                    document.querySelector('.btn-login').style.display = 'none';
-                    document.querySelector('.btn-signup').style.display = 'none';
-                    // Add a mock profile icon or similar if needed
-                }, 1000);
+                // In a real app, we'd verify credentials here
+                const user = { email: email, name: email.split('@')[0] }; // Mock user object
+                login(user);
             }
         });
     }
@@ -322,15 +356,19 @@ document.addEventListener('DOMContentLoaded', () => {
         signupForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('signup-name').value;
-            // Mock Signup
-            if (name) {
-                showToast(`Account created! Welcome, ${name}.`, 'success');
-                setTimeout(() => {
-                    switchView('home');
-                    document.querySelector('.btn-login').style.display = 'none';
-                    document.querySelector('.btn-signup').style.display = 'none';
-                }, 1000);
+            const email = document.getElementById('signup-email').value;
+            // Simulate Signup
+            if (name && email) {
+                const user = { name: name, email: email };
+                login(user);
             }
+        });
+    }
+
+    if (btnLogout) {
+        btnLogout.addEventListener('click', (e) => {
+            e.preventDefault();
+            logout();
         });
     }
 

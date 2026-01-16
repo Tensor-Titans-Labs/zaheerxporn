@@ -38,7 +38,7 @@
                 <li><a href="#" class="active" data-page="home">Home</a></li>
                 <li><a href="#" data-page="explore">Explore</a></li>
                 <li><a href="#" data-page="creators">Creators</a></li>
-                <li><a href="#" data-page="favorites">Favorites</a></li>
+
             </ul>
         </div>
         <div class="nav-right">
@@ -46,8 +46,13 @@
                 <i class="fas fa-search"></i>
                 <input type="text" placeholder="Search...">
             </div>
-            <a href="#" class="btn btn-login" data-page="login">Log In</a>
-            <a href="#" class="btn btn-signup" data-page="signup">Sign Up</a>
+
+
+            <div class="user-menu" id="user-menu" style="display: none;">
+                <span id="nav-username" style="margin-right: 10px; font-weight: 600;">User</span>
+                <button id="btn-logout" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Log
+                    Out</button>
+            </div>
         </div>
         <div class="mobile-menu-btn">
             <i class="fas fa-bars"></i>
