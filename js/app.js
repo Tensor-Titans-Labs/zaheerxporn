@@ -36,12 +36,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function switchView(viewId) {
         state.currentView = viewId;
 
-        // Update Nav
+        // Update Top Nav
         navLinks.forEach(link => {
             if (link.dataset.page === viewId) {
                 link.classList.add('active');
             } else {
                 link.classList.remove('active');
+            }
+        });
+
+        // Update Bottom Nav (Mobile)
+        const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
+        bottomNavItems.forEach(item => {
+            if (item.dataset.page === viewId) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
             }
         });
 
@@ -64,6 +74,24 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const page = link.dataset.page;
+            if (document.getElementById(`${page}-view`)) {
+                switchView(page);
+            }
+        });
+    });
+
+    // --- Mobile Bottom Navigation ---
+    const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
+    bottomNavItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const page = item.dataset.page;
+
+            // Update bottom nav active state
+            bottomNavItems.forEach(navItem => navItem.classList.remove('active'));
+            item.classList.add('active');
+
+            // Switch view
             if (document.getElementById(`${page}-view`)) {
                 switchView(page);
             }
