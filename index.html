@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaheer Unfiltered - Premium Content</title>
+    <meta name="description" content="Premium 18+ content platform. Explore exclusive videos from top creators.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Age Gate Modal -->
+    <div id="age-gate" class="modal active">
+        <div class="modal-content age-gate-content">
+            <h1>18+</h1>
+            <h2>Age Verification Required</h2>
+            <p>This website contains age-restricted materials including nudity and explicit depictions of sexual
+                activity. By entering, you affirm that you are at least 18 years of age or the age of majority in the
+                jurisdiction you are accessing the website from.</p>
+            <div class="age-gate-actions">
+                <button id="enter-btn" class="btn btn-primary">I am 18+ - Enter</button>
+                <button id="leave-btn" class="btn btn-secondary">Exit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="#" class="logo">ZAHEER<span class="highlight">UNFILTERED</span></a>
+            <ul class="nav-links">
+                <li><a href="#" class="active" data-page="home">Home</a></li>
+                <li><a href="#" data-page="explore">Explore</a></li>
+                <li><a href="#" data-page="creators">Creators</a></li>
+                <li><a href="#" data-page="favorites">Favorites</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search...">
+            </div>
+            <a href="#" class="btn btn-login" data-page="login">Log In</a>
+            <a href="#" class="btn btn-signup" data-page="signup">Sign Up</a>
+        </div>
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="main-content">
+        <!-- Home Page View -->
+        <section id="home-view" class="view active">
+            <!-- Hero Section -->
+            <header class="hero">
+                <div class="hero-content">
+                    <span class="badge">Featured Creator</span>
+                    <h1 class="hero-title">Midnight Porn Confessions</h1>
+                    <p class="hero-desc">Exclusive unseen footage from the latest shoot. Available now for premium
+                        subscribers.</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary"><i class="fas fa-play"></i> Watch Now</button>
+                        <button class="btn btn-secondary"><i class="fas fa-info-circle"></i> More Info</button>
+                    </div>
+                </div>
+                <div class="hero-overlay"></div>
+                <div class="hero-bg"
+                    style="background-image: url('https://images.unsplash.com/photo-1516280440614-6697288d5d38?q=80&w=2070&auto=format&fit=crop');">
+                </div>
+            </header>
+
+            <!-- Trending Section -->
+            <section class="content-row">
+                <div class="row-header">
+                    <h2>Trending Now</h2>
+                    <a href="#" class="see-all">See All <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="row-scroller" id="trending-container">
+                    <!-- Content injected via JS -->
+                </div>
+            </section>
+
+            <!-- New Releases Section -->
+            <section class="content-row">
+                <div class="row-header">
+                    <h2>New Releases</h2>
+                    <a href="#" class="see-all">See All <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="row-scroller" id="new-releases-container">
+                    <!-- Content injected via JS -->
+                </div>
+            </section>
+
+            <!-- Categories Section -->
+            <section class="content-row">
+                <div class="row-header">
+                    <h2>Categories</h2>
+                </div>
+                <div class="categories-grid" id="categories-container">
+                    <!-- Categories injected via JS -->
+                </div>
+            </section>
+        </section>
+
+        <!-- Creators List View (Hidden by default) -->
+        <section id="creators-view" class="view">
+            <div class="container">
+                <h1>Top Creators</h1>
+                <div class="grid-layout" id="creators-grid">
+                    <!-- Creators list injected here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Creator Profile View (Hidden by default) -->
+        <section id="creator-view" class="view">
+            <div class="creator-header">
+                <div class="creator-cover"></div>
+                <div class="creator-info-container">
+                    <img src="" alt="Creator" class="creator-avatar" id="profile-avatar">
+                    <div class="creator-details">
+                        <h1 id="profile-name">Creator Name</h1>
+                        <p id="profile-username">@username</p>
+                        <div class="creator-stats">
+                            <span><strong>125K</strong> Subscribers</span>
+                            <span><strong>1.2M</strong> Views</span>
+                        </div>
+                        <button class="btn btn-primary">Subscribe - Free</button>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <h2>Videos</h2>
+                <div class="grid-layout" id="creator-videos-grid">
+                    <!-- Creator videos injected here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Favorites View (Hidden by default) -->
+        <section id="favorites-view" class="view">
+            <div class="container">
+                <h1>My Favorites</h1>
+                <div class="grid-layout" id="favorites-grid">
+                    <!-- Favorites injected here -->
+                    <p class="empty-msg">No favorites yet.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Explore View (Hidden by default) -->
+        <section id="explore-view" class="view">
+            <div class="container">
+                <h1>Explore</h1>
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="trending">Trending</button>
+                    <button class="filter-btn" data-filter="new">New</button>
+                </div>
+                <div class="grid-layout" id="explore-grid">
+                    <!-- Grid content -->
+                </div>
+            </div>
+        </section>
+        <!-- Login View (Hidden by default) -->
+        <section id="login-view" class="view">
+            <div class="auth-container">
+                <div class="auth-box">
+                    <h2>Welcome Back</h2>
+                    <p class="auth-subtitle">Login to access your premium content</p>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-email">Email Address</label>
+                            <input type="email" id="login-email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" placeholder="••••••••" required>
+                        </div>
+                        <div class="form-actions">
+                            <a href="#" class="forgot-pass">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                    </form>
+                    <p class="auth-footer">
+                        Don't have an account? <a href="#" data-page="signup" class="switch-auth">Sign Up</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Signup View (Hidden by default) -->
+        <section id="signup-view" class="view">
+            <div class="auth-container">
+                <div class="auth-box">
+                    <h2>Create Account</h2>
+                    <p class="auth-subtitle">Join the exclusive community</p>
+                    <form id="signup-form">
+                        <div class="form-group">
+                            <label for="signup-name">Display Name</label>
+                            <input type="text" id="signup-name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-email">Email Address</label>
+                            <input type="email" id="signup-email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <input type="password" id="signup-password" placeholder="••••••••" required>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="signup-terms" required>
+                            <label for="signup-terms">I agree to the <a href="#">Terms of Service</a> and confirm I am
+                                18+</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                    </form>
+                    <p class="auth-footer">
+                        Already have an account? <a href="#" data-page="login" class="switch-auth">Log In</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Video Player Modal -->
+    <div id="video-modal" class="modal">
+        <div class="modal-content video-player-content">
+            <div class="video-wrapper">
+                <!-- Placeholder for actual video player -->
+                <div class="video-placeholder">
+                    <i class="fas fa-play-circle"></i>
+                    <p>Premium Content Player</p>
+                </div>
+            </div>
+            <div class="video-details">
+                <h2 id="modal-title">Video Title</h2>
+                <div class="video-actions">
+                    <button class="btn-icon" id="modal-like"><i class="far fa-thumbs-up"></i></button>
+                    <button class="btn-icon" id="modal-fav"><i class="far fa-heart"></i></button>
+                    <button class="btn-icon" id="modal-share"><i class="far fa-share-square"></i></button>
+                </div>
+                <p id="modal-desc">Description of the video goes here...</p>
+                <button class="btn btn-secondary close-modal">Close Player</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-container"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>ZAHEER<span class="highlight">UNFILTERED</span></h3>
+                <p>The premium destination for exclusive adult content.</p>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="#">About</a>
+                <a href="#">Careers</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">2257 Exemption</a>
+                <a href="#">DMCA</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Zaheer Unfiltered. All rights reserved. 18+</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
